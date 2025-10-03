@@ -4,16 +4,6 @@ import { ApiKey } from "./info.js";
 import { baseUrl } from "./info.js";
 import { apiVersion } from "./info.js";
 
-
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector("#navBar");
-    if (window.scrollY > 40) {
-        navbar.classList.add("fixed");
-    } else {
-        navbar.classList.remove("fixed");
-    }
-});
-
 var genres = {};
 
 function fetchGenreData(URL) {

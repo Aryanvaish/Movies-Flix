@@ -48,26 +48,6 @@ export async function detailpopup() {
             document.querySelector('.mainPop p.overview_context').innerHTML = this.querySelector('.hiddenInfo > .overview').textContent;
             document.querySelector('.mainPop h3.rating').innerHTML = `Rating : ${this.querySelector('.hiddenInfo .voteRating').textContent}`;
 
-
-            const activeSlug = this.querySelector('.mainTitle > strong').textContent.replace(/\s+/g, "-").toLowerCase();
-            const activeId = this.querySelector('.hiddenInfo .contentId').textContent;
-            history.pushState({}, null, `?${activeId}&${activeSlug}`);
-
-            const slugQuery = window.location.href.split('&')[1];
-            const slugId = window.location.href.split('?')[1].split('&')[0];
-
-
-            if (slugQuery == "undefined" && slugId == "undefined") {
-                console.log("No Result Found");
-            } else {
-                const activePage = document.createElement('a');
-                activePage.classList.add('activePage');
-                activePage.textContent = this.querySelector('.mainTitle > strong').textContent;
-                document.querySelector('.breadcrumb').append("> ");
-                document.querySelector('.breadcrumb').append(activePage);
-            }
-
-
             const media = this.parentElement.parentElement.getAttribute("data-media-type");
 
             let currMedia;
@@ -139,7 +119,6 @@ export async function detailpopup() {
         })
     }
 }
-
 
 
 if (popup_Warp.classList.contains('hide')) {

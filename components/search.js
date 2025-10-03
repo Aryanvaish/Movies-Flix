@@ -15,10 +15,8 @@ export function Search() {
 
         const invalidText = document.querySelector('.invalidText');
         if (SearchInputValue === "" || SearchInputValue === "-") {
-            console.log("Please enter a movie");
-            invalidText.style.display = "flex";
+            alert("Please enter a movie");
         } else{
-            invalidText.style.display = "none";
             searchApi = `${baseUrl}/${apiVersion}/search/${selectCategory}?api_key=${ApiKey}&query=${SearchInputValue}`;
             document.querySelector('#mainWrap').style.display = "none";
             document.querySelector('#searchResult').style.display = 'block';
