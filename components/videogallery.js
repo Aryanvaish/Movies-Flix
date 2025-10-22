@@ -8,7 +8,6 @@ var currmediatype;
 var currcontentid;
 
 export async function videoGallery(currMedia, contentId) {
-    // Trailer, Teaser, Featurette, Behind the Scenes, Clip, Opening Credits
 
     currmediatype = currMedia;
     currcontentid = contentId;
@@ -48,17 +47,12 @@ export async function videogalleryContent() {
     await fetch(`${baseUrl}/${apiVersion}/${currmediatype}/${currcontentid}/videos?api_key=${ApiKey}`)
         .then((response) => response.json())
         .then((videodata) => {
-            // console.log(videodata);
 
             const galleryDiv = document.querySelector('.galleryWrap.videoWrap');
-
-            // Error handling --------------------------
 
             if (videodata.results.length == 0) {
                 galleryDiv.innerHTML = `<strong class="novideo">Not Available !!!</strong>`
             }
-
-            // -----------------------------------------
 
             for (let i = 0; i < videodata.results.length; i++) {
                 if(videodata.results[i].type.toLowerCase() == activeVideo){
@@ -89,8 +83,5 @@ export async function videogalleryContent() {
                     });
                 });
             }
-
-
         });
-
 }

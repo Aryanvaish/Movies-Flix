@@ -4,7 +4,6 @@ import { apiVersion } from "../info.js";
 
 import { popupClose } from "../script.js"
 
-
 var defaultgallery;
 
 var currmediatype;
@@ -51,13 +50,9 @@ export async function phtotgalleryContent() {
 
             const galleryDiv = document.querySelector('.galleryWrap.photoWrap');
 
-            // Error handling --------------------------
-
             if (defaultgallery.length == 0) {
                 galleryDiv.innerHTML = `<strong class="noimgs">Not Available !!!</strong>`
             }
-
-            // -----------------------------------------
 
             var itemNo = 1;
 
@@ -66,16 +61,12 @@ export async function phtotgalleryContent() {
                 galleryDiv.innerHTML += `<img src="https://image.tmdb.org/t/p/w1066_and_h600_face//${imageUrl}" data-item="img-${itemNo++}">`
             }
 
-            // Img Error Handler -----------------------
-
             const galleryImgs = document.querySelectorAll(".galleryWrap.photoWrap img");
             for (let j = 0; j < galleryImgs.length; j++) {
                 galleryImgs[j].addEventListener("error", function () {
                     galleryImgs[j].setAttribute("src", "images/not-found-image.png");
                 });
             }
-
-            // Img PopoUp ------------------------------
 
             const popup_Warp = document.getElementById('popup_Warp');
             const photoWrapImgs = document.querySelectorAll(".galleryWrap.photoWrap > img");
@@ -111,7 +102,6 @@ export async function phtotgalleryContent() {
 
                     prevImgSlide(); NextImgSlide();
                     document.querySelector('body').style.overflowY = "hidden";
-
                 })
             }
 
@@ -120,7 +110,6 @@ export async function phtotgalleryContent() {
                 const leftArrow = document.querySelector('.arrows.left-item');
                 const RightArrow = document.querySelector('.arrows.right-item');
                 const fullSizegallery = document.querySelector('.fullSizegallery');
-
 
                 leftArrow.addEventListener('click', function () {
                     CurrIndex--;
@@ -140,12 +129,10 @@ export async function phtotgalleryContent() {
                 })
             }
 
-
             async function NextImgSlide() {
                 const RightArrow = document.querySelector('.arrows.right-item');
                 const leftArrow = document.querySelector('.arrows.left-item');
                 const fullSizegallery = document.querySelector('.fullSizegallery');
-
 
                 RightArrow.addEventListener('click', function () {
                     CurrIndex++;
@@ -164,10 +151,6 @@ export async function phtotgalleryContent() {
                     fullSizegallery.src = allimgs[CurrIndex].src;
                 })
             }
-
-
-
         });
-
 }
 

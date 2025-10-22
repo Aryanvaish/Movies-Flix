@@ -22,7 +22,6 @@ export async function detailpopup() {
             document.querySelector('body').classList.remove('home-screen');
             document.querySelector('body').classList.add('detail-screen');
 
-
             innerDetailpage.innerHTML = `
             <div class="mainPop">
                 <a href="javascript:void(0)" class="videoLink" data-yt-key="">
@@ -39,7 +38,6 @@ export async function detailpopup() {
                 <h3 class="rating"></h3>
                 </div>
             </div>`;
-
 
             document.querySelector('.mainPop > a > img.popImg').src = this.querySelector('.poster').src;
             document.querySelector('.mainPop .title > h2').textContent = this.querySelector('.mainTitle > strong').textContent;
@@ -59,7 +57,6 @@ export async function detailpopup() {
             } else if (media == "multi") {
                 currMedia = this.querySelector('.hiddenInfo > p.mediaType').textContent;
             }
-
 
             fetch(`${baseUrl}/${apiVersion}/${currMedia}/${this.querySelector('.hiddenInfo .contentId').textContent}/videos?api_key=${ApiKey}`)
                 .then((response) => response.json())
@@ -88,7 +85,6 @@ export async function detailpopup() {
 
             });
 
-
             const ratedOrnot = this.querySelector('.hiddenInfo .adultScheme').textContent;
             if (ratedOrnot == 'false') {
                 document.querySelector('.mainPop img.adultContext').src = 'images/tick.png';
@@ -100,18 +96,12 @@ export async function detailpopup() {
                 document.querySelector('.mainPop img.adultContext').classList.add('RatedPlus');
             }
 
-            // PhotoGallery Section --------------
-
             const contentId = this.querySelector('.hiddenInfo .contentId').textContent;
             photoGallery(currMedia, contentId);
             phtotgalleryContent();
 
-            // Video Gallery Section -------------
-
             videoGallery(currMedia, contentId);
             videogalleryContent();
-
-            // End -------------------------------
 
             document.querySelector('#searchResult').style.display = 'none';
             innerDetailpage.style.display = 'block';

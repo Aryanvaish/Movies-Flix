@@ -329,7 +329,6 @@ section#popup_Warp {
     border-radius: 10px;
     gap: 15px 0;
     transition: all 300ms ease;
-
 }
 
 .advFilters .popSearchInp {
@@ -340,6 +339,7 @@ section#popup_Warp {
     padding: 0 20px;
     font-size: 16px;
     outline: none;
+    text-transform: capitalize;
     color: var(--white);
 
     background: #161616;
