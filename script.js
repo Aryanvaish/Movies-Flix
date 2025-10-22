@@ -74,13 +74,9 @@ export async function UrlCreate(pageurl, parentDiv, page) {
                 document.querySelector('.searchResult ul').innerHTML = `<div class="notFound">Not Found, Please Try Agian !!!</div>`
             }
 
-            // Total Pages of URLS  
-
             let total_pages = data.total_pages;
             const parentWrapper = document.querySelector(`.${parentDiv}`);
             parentWrapper.setAttribute('data-total-pages', total_pages);
-
-            // End ;
 
             const listWrap = document.querySelector(`.${parentDiv} ul`);
             for (let i = 0; i < data.results?.length; i++) {

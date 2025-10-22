@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "my-static-site",
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
