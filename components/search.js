@@ -25,7 +25,7 @@ const searchTrigger = () => {
     }
 }
 
-const triggerWithDebounce = debounce(searchTrigger, 400)
+const triggerWithDebounce = debounce(searchTrigger, 1500)
 
 export function Search() {
     document.querySelector('.filterbtn').addEventListener('click', () => {

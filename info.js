@@ -5,6 +5,15 @@ export const apiVersion = "3";
 const domain = window.location.origin;
 document.querySelector('.nav_Container > a').setAttribute('href', domain);
 
+window.addEventListener('load', function () {
+  history.pushState(null, '', location.href);
+});
+
+window.addEventListener('popstate', function () {
+  location.reload();
+});
+
+
 // Api : --------------------
 
 // Movie Genre :  https://api.themoviedb.org/3/genre/movie/list?api_key=e6e82b1d384c0712afd3d57364994f60
