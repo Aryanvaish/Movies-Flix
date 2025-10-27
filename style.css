@@ -692,6 +692,12 @@ footer span.small-text {
     }
 }
 
+@media(max-width: 1000px) {
+    .contWrap ul li {
+        max-width: 23%;
+    }
+}
+
 @media(max-width:800px) {
     .galleryWrap::-webkit-scrollbar {
         height: 6px;
