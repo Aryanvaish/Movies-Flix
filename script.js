@@ -86,15 +86,16 @@ export async function UrlCreate(pageurl, parentDiv, page) {
                 let adultScheme = data.results[i].adult;
                 let overview = data.results[i].overview;
                 let releDate = data.results[i].release_date || data.results[i].first_air_date;
-                let voteRating = data.results[i].vote_average?.toString().substring(0, 3);
-                let rating = data.results[i].vote_average?.toString().substring(0, 3);
+                let rawRating = data.results[i].vote_average;
+                let rating = rawRating ? rawRating.toFixed(1) : "0";
+                let voteRating = rating;
                 let contentId = data.results[i].id;
                 let mediaType = data.results[i].media_type;
 
                 let genretags = "";
 
                 for (let j = 0; j < genreKey?.length; j++) {
-                    if (genres[genreKey[j]]) { 
+                    if (genres[genreKey[j]]) {
                         genretags += `${genres[genreKey[j]]} ${j !== (genreKey.length - 1) ? ',' : ''} `;
                     }
                 }
@@ -104,13 +105,15 @@ export async function UrlCreate(pageurl, parentDiv, page) {
 
                 if (ratingStat >= 8) {
                     ratingBg = "green";
-                } else if (ratingStat == 7 || ratingStat == 6 || ratingStat == 5) {
+                } else if (ratingStat >= 5) {
                     ratingBg = "yellow";
+                } else if (ratingStat > 0) {
+                    ratingBg = "red";
                 } else {
+                    rating = "Upcoming";
                     ratingBg = "red";
                 }
 
-                if (ratingStat == 0) { rating = "Upcoming"; }
                 listWrap.innerHTML += `   
                     <li class="cont_boxes">
                     <strong class="rating ${ratingBg}">${rating}</strong>  
